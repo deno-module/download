@@ -15,9 +15,9 @@ import { download } from "./mod.ts";
 ##### SAMPLE 1 :
 ``` ts
 import { download } from "./mod.ts";
-// // import { DownlodedFile } from "./lib.d.ts"
+// import { DownlodedFile } from "./lib.d.ts"
 
-const url: string = 'http://www.africau.edu/images/default/sample.pdf';
+const url: string = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
 
 try {
     const fileObj = await download(url);
@@ -30,7 +30,7 @@ try {
 ``` ts
 import { download } from "./mod.ts";
 
-const url: string = 'http://www.africau.edu/images/default/sample.pdf';
+const url: string = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
 
 download(url)
   .then(fileObj =>{
@@ -42,7 +42,7 @@ download(url)
 ```
 By default, the module creates a temporary directory every time you call the `download` function and downloads the file into it.
 
-You can specify the download destination, filename and also the permission via the second parameter.
+You can specify the download destination, filename and also the file permission via the second parameter.
 
 **Note :**` download directory should be present, else error will be thrown`
 
@@ -58,9 +58,9 @@ Destination {
 ##### SAMPLE 2 :
 ``` ts
 import { download } from "./mod.ts";
-// // import { DownlodedFile, Destination } from "./lib.d.ts"
+// import { DownlodedFile, Destination } from "./lib.d.ts"
 
-const url: string = 'http://www.africau.edu/images/default/sample.pdf';
+const url: string = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
 
 try {
     // NOTE : You need to ensure that the directory you pass exists.
@@ -87,9 +87,9 @@ Behind the scene this module uses deno's fetch api. The third parameter to downl
 ##### SAMPLE 3 :
 ``` ts
 import { download } from "./mod.ts";
-// // import { DownlodedFile, Destination } from "./lib.d.ts"
+// import { DownlodedFile, Destination } from "./lib.d.ts"
 
-const url: string = 'http://www.africau.edu/images/default/sample.pdf';
+const url: string = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
 
 try {
     const destination = {}
@@ -112,7 +112,7 @@ try {
 ### Return:
 `download` function returns `file`(filename), `dir`, `fullPath`, and `size`(in bytes)
 ```ts
-// definiton of return object // ./lib.d.ts
+// definiton of return object. check:./lib.d.ts
 DownlodedFile {
   file: string,
   dir:string,
