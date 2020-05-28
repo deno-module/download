@@ -2,7 +2,7 @@
 
 <!-- [![Travis]()]() -->
 
-A simple deno `fetch api` based module to `download` the file from a given URL.
+A simple deno `fetch api` based module to `download` file from a URL.
 
 ## Import
 
