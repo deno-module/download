@@ -43,6 +43,7 @@ download(url)
 By default, the module creates a temporary directory every time you call the `download` function and downloads the file into it.
 
 You can specify the download destination, filename and also the permission via the second parameter.
+
 **Note :**` download directory should be present, else error will be thrown`
 
 
