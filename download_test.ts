@@ -1,6 +1,6 @@
 import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
 import { ensureDirSync, existsSync } from "https://deno.land/std/fs/mod.ts"
-import { DownlodedFile, Destination } from "./lib.d.ts"
+import { DownlodedFile, Destination } from "./types.ts"
 import { download } from "./mod.ts";
 
 const url:string = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
