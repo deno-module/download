@@ -52,6 +52,6 @@ export async function download(
     // ensureDirSync(dir)
 
     fullPath = `${dir}/${file}`;
-      Deno.writeFileSync(fullPath, unit8arr, mode);
+    Deno.writeFileSync(fullPath, unit8arr, mode);
     return Promise.resolve({file, dir, fullPath, size});
 }
