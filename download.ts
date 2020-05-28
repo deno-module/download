@@ -48,7 +48,7 @@ export async function download(
     }
 
     dir = dir.replace(/\/$/, "");
-    // TODO(kt-12): Enable ensureDirSync once stable and remove exists
+    // TODO(kt-12): Enable ensureDirSync once stable.
     // ensureDirSync(dir)
 
     fullPath = `${dir}/${file}`;
