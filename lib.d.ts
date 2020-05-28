@@ -1,11 +1,12 @@
-interface Destination {
+export interface Destination {
   dir?: string,
-  file: string,
+  file?: string,
   mode?: number
 }
 
-interface DownlodedFile {
-  filePath: string,
+export interface DownlodedFile {
   file: string,
-  dir:string
+  dir:string,
+  fullPath: string,
+  size: number
 }
