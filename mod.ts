@@ -1,2 +1,2 @@
 export * from "./download.ts";
-export * from "./lib.d.ts";
+export * from "./types.ts";

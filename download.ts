@@ -1,8 +1,8 @@
-import { Destination, DownlodedFile } from "./lib.d.ts";
+import { Destination, DownlodedFile } from "./types.ts";
 // import { ensureDirSync } from "https://deno.land/std/fs/mod.ts"
 
 /**
- * Download file from url to the distnation.
+ * Download file from url to the destination.
  *
  * @param {any} url:string|URL url of the file to be donwloaded.
  * @param {any} destination?:Destination Destination details do the downloaded file.
@@ -52,6 +52,6 @@ export async function download(
     // ensureDirSync(dir)
 
     fullPath = `${dir}/${file}`;
-    Deno.writeFileSync(fullPath, unit8arr, mode);
+      Deno.writeFileSync(fullPath, unit8arr, mode);
     return Promise.resolve({file, dir, fullPath, size});
 }
