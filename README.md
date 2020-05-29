@@ -1,4 +1,4 @@
-# download ⤵️
+# `download⤵️` for Deno
 
 [![Travis](http://img.shields.io/travis/deno-module/download.svg?style=flat)](https://travis-ci.org/github/deno-module/download/) [![tag](https://img.shields.io/badge/deno->=1.0.2-green.svg?color=blue&logo=qcom&logoColor=blue&style=plastic)](https://github.com/denoland/deno)
 
