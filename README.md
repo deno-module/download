@@ -18,7 +18,7 @@ import { download } from "./mod.ts";
 import { download } from "./mod.ts";
 // import { DownlodedFile } from "./lib.d.ts"
 
-const url: string = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
+const url = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
 
 try {
     const fileObj = await download(url);
@@ -31,10 +31,10 @@ try {
 ``` ts
 import { download } from "./mod.ts";
 
-const url: string = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
+const url = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
 
 download(url)
-  .then(fileObj =>{
+  .then(fileObj => {
     console.log(fileObj)
   })
   .catch(err => {
@@ -58,14 +58,13 @@ Destination {
 ```
 ##### SAMPLE 2 :
 ``` ts
-import { download } from "./mod.ts";
-// import { DownlodedFile, Destination } from "./lib.d.ts"
+import { download, Destination } from "./mod.ts";
 
-const url: string = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
+const url = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
 
 try {
     // NOTE : You need to ensure that the directory you pass exists.
-    const destination = {
+    const destination: Destination = {
         file: 'example.pdf',
         dir: './test'
     }
@@ -87,13 +86,12 @@ Behind the scene this module uses deno's fetch api. The third parameter to downl
 
 ##### SAMPLE 3 :
 ``` ts
-import { download } from "./mod.ts";
-// import { DownlodedFile, Destination } from "./lib.d.ts"
+import { download, Destination } from "./mod.ts";
 
-const url: string = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
+const url = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
 
 try {
-    const destination = {}
+    const destination: Destination = {}
     const reqInit: RequestInit = {
         method: 'GET'
     }
