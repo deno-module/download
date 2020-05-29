@@ -27,7 +27,7 @@ try {
 ```
 ##### Alternatively :
 ``` ts
-import { download } from "./mod.ts";
+import { download } from "https://deno.land/x/download/mod.ts";
 
 const url = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
 
