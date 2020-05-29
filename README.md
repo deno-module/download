@@ -104,7 +104,7 @@ try {
     console.log(err)
 }
 ```
-### Return:
+### Return Value
 `download` function returns `file`(filename), `dir`, `fullPath`, and `size`(in bytes)
 ```ts
 // definiton of return object. check:./type.ts
