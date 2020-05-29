@@ -8,14 +8,14 @@ Deno `fetch api` based module to `download` file from a URL.
 ## Import
 
 ```ts
-import { download } from "./mod.ts";
+import { download } from "https://deno.land/x/download/mod.ts";
 ```
 
 ## Usage
 
 ##### SAMPLE 1 :
 ``` ts
-import { download } from "./mod.ts";
+import { download } from "https://deno.land/x/download/mod.ts";
 
 const url = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
 
@@ -56,7 +56,7 @@ Destination {
 ```
 ##### SAMPLE 2 :
 ``` ts
-import { download, Destination } from "./mod.ts";
+import { download, Destination } from "https://deno.land/x/download/mod.ts";
 
 const url = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
 
@@ -83,7 +83,7 @@ Behind the scene this module uses deno's fetch api. The third parameter to `down
 
 ##### SAMPLE 3 :
 ``` ts
-import { download, Destination } from "./mod.ts";
+import { download, Destination } from "https://deno.land/x/download/mod.ts";
 
 const url = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
 
