@@ -16,13 +16,11 @@ import { download } from "./mod.ts";
 ##### SAMPLE 1 :
 ``` ts
 import { download } from "./mod.ts";
-// import { DownlodedFile } from "./lib.d.ts"
 
 const url = 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf';
 
 try {
     const fileObj = await download(url);
-    // const fileObj: DownloadedFile = await download(url);
 } catch (err) {
     console.log(err)
 }
@@ -45,11 +43,11 @@ By default, the module creates a temporary directory every time you call the `do
 
 You can specify the download destination, filename and also the file permission via the second parameter.
 
-**Note :**` download directory should be present, else error will be thrown`
+**Note :**`As of now download directory should be present, else error will be thrown. This will not be the case in future.`
 
 
 ``` ts
-// def of 2nd parameter. ./lib.d.ts
+// def of 2nd parameter. ./type.ts
 Destination {
   dir?: string,
   file?: string,
@@ -76,13 +74,12 @@ try {
     }
     */
     const fileObj = await download(url, destination);
-    // const fileObj: DownloadedFile = await download(url,destination);
 } catch (err) {
     console.log(err)
 }
 ```
 ##### Passing http methods and headers:
-Behind the scene this module uses deno's fetch api. The third parameter to download() function is [RequestInit](https://github.com/denoland/deno/blob/master/cli/js/lib.deno.shared_globals.d.ts#L769). You can pass body, headers, cache, method.. the same way you pass to the fetch api.
+Behind the scene this module uses deno's fetch api. The third parameter to `download` function is [RequestInit](https://github.com/denoland/deno/blob/master/cli/js/lib.deno.shared_globals.d.ts#L769). You can pass `body`, `headers`, `cache`, `method`... the same way you pass to the fetch api.
 
 ##### SAMPLE 3 :
 ``` ts
@@ -103,7 +100,6 @@ try {
     }
     */
     const fileObj = await download(url, destination, reqInit);
-    // const fileObj: DownloadedFile = await download(url,destination);
 } catch (err) {
     console.log(err)
 }
@@ -111,7 +107,7 @@ try {
 ### Return:
 `download` function returns `file`(filename), `dir`, `fullPath`, and `size`(in bytes)
 ```ts
-// definiton of return object. check:./lib.d.ts
+// definiton of return object. check:./type.ts
 DownlodedFile {
   file: string,
   dir:string,
