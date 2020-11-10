@@ -13,7 +13,6 @@ Deno.test({
     const reqInit: RequestInit = {
           method: "GET",
         };
-    ensureDirSync('./test');
     const destination: Destination = {
         file: 'example.pdf',
         dir: './test',
