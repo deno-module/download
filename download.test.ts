@@ -6,7 +6,7 @@ import {
 import { Destination, DownlodedFile } from "./types.ts";
 import { download } from "./mod.ts";
 
-const url: string =
+const url =
   "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
 let fileObj: DownlodedFile;
 let fileInfo: Deno.FileInfo;
