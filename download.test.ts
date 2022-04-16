@@ -1,8 +1,5 @@
 import { assertEquals } from "https://deno.land/std@0.134.0/testing/asserts.ts";
-import {
-  ensureDirSync,
-  existsSync,
-} from "https://deno.land/std@0.134.0/fs/mod.ts";
+import { ensureDirSync } from "https://deno.land/std@0.134.0/fs/mod.ts";
 import { Destination, DownlodedFile } from "./types.ts";
 import { download } from "./mod.ts";
 
@@ -24,7 +21,9 @@ Deno.test({
       mode: 0o777,
     };
     fileObj = await download(url, destination, reqInit);
-    assertEquals(true, existsSync(fileObj.fullPath));
+
+    const fileStats = await Deno.stat(fileObj.fullPath);
+    assertEquals(true, fileStats.isFile);
   },
 });
 
