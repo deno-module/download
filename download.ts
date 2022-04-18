@@ -27,12 +27,13 @@ export async function download(
   options?: RequestInit,
 ): Promise<DownlodedFile> {
   const response = await fetch(fetchInput, options);
-  const finalUrl = response.url.replace(/\/$/, "");
-  if (response.status != 200) {
+  if (response.status !== 200) {
     throw new Deno.errors.Http(
       `status ${response.status}-'${response.statusText}' received instead of 200`,
     );
   }
+
+  const finalUrl = response.url.replace(/\/$/, "");
   const blob = await response.blob();
   /** size in bytes */
   const size = blob.size;
