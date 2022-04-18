@@ -45,26 +45,13 @@ export async function download(
   size = blob.size;
   const buffer = await blob.arrayBuffer();
   const unit8arr = new Buffer(buffer).bytes();
-  if (
-    typeof destination === "undefined" || typeof destination.dir === "undefined"
-  ) {
-    dir = Deno.makeTempDirSync({ prefix: "deno_dwld" });
-  } else {
-    dir = destination.dir;
-  }
-  if (
-    typeof destination === "undefined" ||
-    typeof destination.file === "undefined"
-  ) {
-    file = finalUrl.substring(finalUrl.lastIndexOf("/") + 1);
-  } else {
-    file = destination.file;
-  }
-  if (
-    typeof destination != "undefined" && typeof destination.mode != "undefined"
-  ) {
-    mode = { mode: destination.mode };
-  }
+
+  // ?. operator - returns undefined, if destination is undefined
+  // ?.dir expression - returns undefined, when dir prop is undefined
+  // ?? operator -  returns the right side expression, when left side is undefined
+  dir = destination?.dir ?? Deno.makeTempDirSync({ prefix: "deno_dwld" });
+  file = destination?.file ?? finalUrl.substring(finalUrl.lastIndexOf("/") + 1);
+  mode = (destination?.mode !== undefined) ? { mode: destination.mode } : {};
 
   dir = dir.replace(/\/$/, "");
   // TODO(kt-12): Enable ensureDirSync once stable.
