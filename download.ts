@@ -1,5 +1,5 @@
 import { Destination, DownlodedFile } from "./types.ts";
-import { Buffer } from "https://deno.land/std@0.134.0/io/buffer.ts";
+import { Buffer } from "https://deno.land/std@0.135.0/io/buffer.ts";
 
 // TODO(kt-12): Enable ensure dir once stable.
 // import { ensureDirSync } from "https://deno.land/std/fs/mod.ts"
