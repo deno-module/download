@@ -29,10 +29,10 @@ Deno.test({
 
 Deno.test({
   name: "Downloaded File Size",
-  fn(): void {
-    fileInfo = Deno.lstatSync(fileObj.fullPath);
+  async fn() {
+    fileInfo = await Deno.stat(fileObj.fullPath);
     assertEquals(fileInfo.size, fileObj.size);
-    Deno.removeSync("./test", { recursive: true }); // remove folder in the last test
+    await Deno.remove("./test", { recursive: true }); // remove folder in the last test
   },
 });
 
