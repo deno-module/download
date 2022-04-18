@@ -34,10 +34,8 @@ export async function download(
   const response = await fetch(fetchInput, options);
   finalUrl = response.url.replace(/\/$/, "");
   if (response.status != 200) {
-    return Promise.reject(
-      new Deno.errors.Http(
-        `status ${response.status}-'${response.statusText}' received instead of 200`,
-      ),
+    throw new Deno.errors.Http(
+      `status ${response.status}-'${response.statusText}' received instead of 200`,
     );
   }
   const blob = await response.blob();
