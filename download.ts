@@ -3,8 +3,24 @@ import { Destination, DownlodedFile } from "./types.ts";
 // import { ensureDirSync } from "https://deno.land/std/fs/mod.ts"
 
 /** Download file from url to the destination. */
+
+// Overload Signature to be called with a fetch request object
 export async function download(
-  url: string | URL,
+  request: Request,
+  destination?: Destination,
+  options?: RequestInit,
+): Promise<DownlodedFile>;
+
+// Overload Signature to be called with a simple string url
+export async function download(
+  url: string,
+  destination?: Destination,
+  options?: RequestInit,
+): Promise<DownlodedFile>;
+
+// "download" function implementation
+export async function download(
+  fetchInput: string | Request,
   destination?: Destination,
   options?: RequestInit,
 ): Promise<DownlodedFile> {
@@ -15,7 +31,7 @@ export async function download(
   let finalUrl: string;
   let size: number;
 
-  const response = await fetch(url, options);
+  const response = await fetch(fetchInput, options);
   finalUrl = response.url.replace(/\/$/, "");
   if (response.status != 200) {
     return Promise.reject(
