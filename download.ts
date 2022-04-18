@@ -1,4 +1,4 @@
-import { Destination, DownlodedFile } from "./types.ts";
+import { Destination, DownloadedFile } from "./types.ts";
 import { Buffer } from "https://deno.land/std@0.135.0/io/buffer.ts";
 
 // TODO(kt-12): Enable ensure dir once stable.
@@ -11,21 +11,21 @@ export async function download(
   request: Request,
   destination?: Destination,
   options?: RequestInit,
-): Promise<DownlodedFile>;
+): Promise<DownloadedFile>;
 
 // Overload Signature to be called with a simple string url
 export async function download(
   url: string,
   destination?: Destination,
   options?: RequestInit,
-): Promise<DownlodedFile>;
+): Promise<DownloadedFile>;
 
 // "download" function implementation
 export async function download(
   fetchInput: string | Request,
   destination?: Destination,
   options?: RequestInit,
-): Promise<DownlodedFile> {
+): Promise<DownloadedFile> {
   const response = await fetch(fetchInput, options);
   if (response.status !== 200) {
     throw new Deno.errors.Http(

@@ -1,6 +1,6 @@
 import { assertEquals } from "https://deno.land/std@0.134.0/testing/asserts.ts";
 import { ensureDirSync } from "https://deno.land/std@0.134.0/fs/mod.ts";
-import { Destination, DownlodedFile } from "./types.ts";
+import { Destination, DownloadedFile } from "./types.ts";
 import { download } from "./mod.ts";
 
 const url =
@@ -11,7 +11,7 @@ const url =
 Deno.test({
   name: "File Download",
   async fn(t) {
-    let fileObj: DownlodedFile;
+    let fileObj: DownloadedFile;
 
     // Step 1
     await t.step(`Step 1 - Download`, async () => {
