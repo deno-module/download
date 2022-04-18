@@ -1,4 +1,6 @@
 import { Destination, DownlodedFile } from "./types.ts";
+import { Buffer } from "https://deno.land/std@0.134.0/io/buffer.ts";
+
 // TODO(kt-12): Enable ensure dir once stable.
 // import { ensureDirSync } from "https://deno.land/std/fs/mod.ts"
 
@@ -42,7 +44,7 @@ export async function download(
   /** size in bytes */
   size = blob.size;
   const buffer = await blob.arrayBuffer();
-  const unit8arr = new Deno.Buffer(buffer).bytes();
+  const unit8arr = new Buffer(buffer).bytes();
   if (
     typeof destination === "undefined" || typeof destination.dir === "undefined"
   ) {
