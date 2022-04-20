@@ -4,29 +4,20 @@ import { Buffer } from "https://deno.land/std@0.135.0/io/buffer.ts";
 // TODO(kt-12): Enable ensure dir once stable.
 // import { ensureDirSync } from "https://deno.land/std/fs/mod.ts"
 
-/** Download file from url to the destination. */
-
-// Overload Signature to be called with a fetch request object
+/**
+ * Download file from url to the destination
+ *
+ * @param input - either an url string or fetch request object
+ * @param destination
+ * @param options
+ * @returns
+ */
 export async function download(
-  request: Request,
-  destination?: Destination,
-  options?: RequestInit,
-): Promise<DownloadedFile>;
-
-// Overload Signature to be called with a simple string url
-export async function download(
-  url: string,
-  destination?: Destination,
-  options?: RequestInit,
-): Promise<DownloadedFile>;
-
-// "download" function implementation
-export async function download(
-  fetchInput: string | Request,
+  input: string | Request,
   destination?: Destination,
   options?: RequestInit,
 ): Promise<DownloadedFile> {
-  const response = await fetch(fetchInput, options);
+  const response = await fetch(input, options);
   if (response.status !== 200) {
     throw new Deno.errors.Http(
       `status ${response.status}-'${response.statusText}' received instead of 200`,
