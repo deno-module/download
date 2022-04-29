@@ -32,11 +32,15 @@ which re-exports the contents of this library like this:
 export * from "https://deno.land/x/download@v1.0.1/mod.ts"
 ```
 
-After that you can import your local `/dependencies/download.ts` file everywhere you need it. 
+After that you can import your local `/dependencies/download.ts` file everywhere you need it.  
+Note that the examples in this file are using the non-versioned url to keep them straightforward. 
 
 ## Usage
 
 ##### SAMPLE 1 :
+This is how you can use the download function directly in a ts file executable by deno.
+
+
 ``` ts
 import { download } from "https://deno.land/x/download/mod.ts";
 
@@ -102,7 +106,9 @@ try {
 }
 ```
 ##### Passing http methods and headers:
-Behind the scene this module uses deno's fetch api. The third parameter to `download` function is [RequestInit](https://github.com/denoland/deno/blob/master/cli/js/lib.deno.shared_globals.d.ts#L769). You can pass `body`, `headers`, `cache`, `method`... the same way you pass to the fetch api.
+Behind the scene this module uses [deno's fetch api](https://doc-land.deno.dev/deno/stable/~/fetch). 
+The third parameter to `download` function is [RequestInit](https://doc-land.deno.dev/deno/stable/~/RequestInit). You can pass `body`, `headers`, `cache`, `method`... the same way you pass to the fetch api.  
+Alternatively you can pass a complete [Request](https://doc-land.deno.dev/deno/stable/~/Request) object as the first parameter, instead of using a string `url` with the third `requestInit` param
 
 ##### SAMPLE 3 :
 ``` ts
