@@ -137,7 +137,7 @@ try {
 `download` function returns an object with attributes: `file`(filename), `dir`, `fullPath`, and `size`(in bytes)
 ```ts
 // definiton of return object. check:./type.ts
-DownlodedFile {
+DownloadedFile {
   file: string,
   dir:string,
   fullPath: string,
