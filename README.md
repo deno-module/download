@@ -1,7 +1,6 @@
 # `download⤵️` for Deno
 
-[![Travis](http://img.shields.io/travis/deno-module/download.svg?style=flat)](https://travis-ci.org/github/deno-module/download/)
-[![tag](https://img.shields.io/badge/deno->=1.0.2-green.svg?color=blue&logo=qcom&logoColor=blue&style=plastic)](https://github.com/denoland/deno)
+[![tag](https://img.shields.io/badge/deno-%3E=2.0.1-green.svg?color=blue&logo=qcom&logoColor=blue&style=plastic)](https://github.com/denoland/deno)
 
 Deno `fetch api` based module to `download` file from a URL.
 
