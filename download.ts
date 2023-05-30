@@ -1,51 +1,48 @@
-import { Destination, DownlodedFile } from "./types.ts";
-// TODO(kt-12): Enable ensure dir once stable.
-// import { ensureDirSync } from "https://deno.land/std/fs/mod.ts"
+import { Destination, DownloadedFile } from "./types.ts";
+import { Buffer } from "https://deno.land/std@0.190.0/io/buffer.ts";
+import { ensureDirSync } from "https://deno.land/std@0.190.0/fs/mod.ts"
 
-/** Download file from url to the destination. */
+/**
+ * Download file from url to the destination
+ *
+ * @param input - either an url string or fetch request object
+ * @param destination
+ * @param options
+ * @returns
+ */
 export async function download(
-  url:string|URL,
-  destination?:Destination,
-  options?:RequestInit
-): Promise<DownlodedFile>{
-    let file:string;
-    let fullPath:string;
-    let dir:string = '';
-    let mode:object = {};
-    let finalUrl:string;
-    let size:number;
+  input: string | Request,
+  destination?: Destination,
+  options?: RequestInit,
+): Promise<DownloadedFile> {
+  const response = await fetch(input, options);
+  if (response.status !== 200) {
+    throw new Deno.errors.Http(
+      `status ${response.status}-'${response.statusText}' received instead of 200`,
+    );
+  }
 
-    const response = await fetch(url, options);
-    finalUrl = response.url.replace(/\/$/, "");
-    if(response.status != 200){
-      return Promise.reject(
-        new Deno.errors.Http(`status ${response.status}-'${response.statusText}' received instead of 200`)
-      );
-    }
-    const blob = await response.blob();
-    /** size in bytes */
-    size = blob.size;
-    const buffer = await blob.arrayBuffer();
-    const unit8arr = new Deno.Buffer(buffer).bytes();
-    if( typeof destination === 'undefined' || typeof destination.dir === 'undefined' ){
-      dir = Deno.makeTempDirSync({ prefix: 'deno_dwld' });
-    } else {
-      dir = destination.dir;
-    }
-    if(typeof destination === 'undefined' || typeof destination.file === 'undefined' ){
-      file = finalUrl.substring(finalUrl.lastIndexOf('/')+1);
-    } else {
-      file = destination.file;
-    }
-    if(typeof destination != 'undefined' && typeof destination.mode != 'undefined' ){
-        mode = { mode: destination.mode }
-    }
+  const finalUrl = response.url.replace(/\/$/, "");
+  const blob = await response.blob();
+  /** size in bytes */
+  const size = blob.size;
+  const buffer = await blob.arrayBuffer();
+  const unit8arr = new Buffer(buffer).bytes();
 
-    dir = dir.replace(/\/$/, "");
-    // TODO(kt-12): Enable ensureDirSync once stable.
-    // ensureDirSync(dir)
+  // ?. operator - returns undefined, if destination is undefined
+  // ?.dir expression - returns undefined, when dir prop is undefined
+  // ?? operator -  returns the right side expression, when left side is undefined
+  let dir = destination?.dir ?? Deno.makeTempDirSync({ prefix: "deno_dwld" });
+  const file = destination?.file ??
+    finalUrl.substring(finalUrl.lastIndexOf("/") + 1);
+  const mode = (destination?.mode !== undefined)
+    ? { mode: destination.mode }
+    : {};
 
-    fullPath = `${dir}/${file}`;
-    Deno.writeFileSync(fullPath, unit8arr, mode);
-    return Promise.resolve({file, dir, fullPath, size});
+  dir = dir.replace(/\/$/, "");
+  ensureDirSync(dir)
+
+  const fullPath = `${dir}/${file}`;
+  await Deno.writeFile(fullPath, unit8arr, mode);
+  return { file, dir, fullPath, size };
 }

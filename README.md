@@ -7,13 +7,40 @@ Deno `fetch api` based module to `download` file from a URL.
 
 ## Import
 
+A specific version (preferred): 
+```ts
+// Note this "@v1.0.1" part in the url, 
+// this can be any version tag of this library
+import { download } from "https://deno.land/x/download@v1.0.1/mod.ts";
+```
+
+Non-versioned URL / "latest" (for quick tests only!): 
 ```ts
 import { download } from "https://deno.land/x/download/mod.ts";
 ```
 
+Note: The problem with importing the versionless url is
+that each team member might get a different version of this library, 
+depending on when they downloaded this lib the first time.  
+Therefore it's better to import from a versioned url and update the version manually. 
+
+Extra Tip: To avoid needing to update this url in every file in your codebase, 
+you can write a file like `/dependencies/download.ts` in your repo, 
+which re-exports the contents of this library like this: 
+
+```ts
+export * from "https://deno.land/x/download@v1.0.1/mod.ts"
+```
+
+After that you can import your local `/dependencies/download.ts` file everywhere you need it.  
+Note that the examples in this file are using the non-versioned url to keep them straightforward. 
+
 ## Usage
 
 ##### SAMPLE 1 :
+This is how you can use the download function directly in a ts file executable by deno.
+
+
 ``` ts
 import { download } from "https://deno.land/x/download/mod.ts";
 
@@ -79,7 +106,9 @@ try {
 }
 ```
 ##### Passing http methods and headers:
-Behind the scene this module uses deno's fetch api. The third parameter to `download` function is [RequestInit](https://github.com/denoland/deno/blob/master/cli/js/lib.deno.shared_globals.d.ts#L769). You can pass `body`, `headers`, `cache`, `method`... the same way you pass to the fetch api.
+Behind the scene this module uses [deno's fetch api](https://doc-land.deno.dev/deno/stable/~/fetch). 
+The third parameter to `download` function is [RequestInit](https://doc-land.deno.dev/deno/stable/~/RequestInit). You can pass `body`, `headers`, `cache`, `method`... the same way you pass to the fetch api.  
+Alternatively you can pass a complete [Request](https://doc-land.deno.dev/deno/stable/~/Request) object as the first parameter, instead of using a string `url` with the third `requestInit` param
 
 ##### SAMPLE 3 :
 ``` ts
@@ -108,7 +137,7 @@ try {
 `download` function returns an object with attributes: `file`(filename), `dir`, `fullPath`, and `size`(in bytes)
 ```ts
 // definiton of return object. check:./type.ts
-DownlodedFile {
+DownloadedFile {
   file: string,
   dir:string,
   fullPath: string,
