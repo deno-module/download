@@ -4,4 +4,4 @@ os:
 
 before_script: curl -sL https://deno.land/x/install/install.sh | sh
 
-script: $HOME/.deno/bin/deno test --allow-net --allow-write --allow-read --unstable ./download_test.ts
+script: $HOME/.deno/bin/deno task test

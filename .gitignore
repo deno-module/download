@@ -1,0 +1,2 @@
+# Ignore .vscode folder so that each contributor can have it's own vscode settings, esp. for linting
+.vscode
