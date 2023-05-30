@@ -1,8 +1,6 @@
 import { Destination, DownloadedFile } from "./types.ts";
-import { Buffer } from "https://deno.land/std@0.135.0/io/buffer.ts";
-
-// TODO(kt-12): Enable ensure dir once stable.
-// import { ensureDirSync } from "https://deno.land/std/fs/mod.ts"
+import { Buffer } from "https://deno.land/std@0.190.0/io/buffer.ts";
+import { ensureDirSync } from "https://deno.land/std@0.190.0/fs/mod.ts"
 
 /**
  * Download file from url to the destination
@@ -42,8 +40,7 @@ export async function download(
     : {};
 
   dir = dir.replace(/\/$/, "");
-  // TODO(kt-12): Enable ensureDirSync once stable.
-  // ensureDirSync(dir)
+  ensureDirSync(dir)
 
   const fullPath = `${dir}/${file}`;
   await Deno.writeFile(fullPath, unit8arr, mode);
