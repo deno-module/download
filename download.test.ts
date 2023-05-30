@@ -1,5 +1,5 @@
-import { assertEquals } from "https://deno.land/std@0.134.0/testing/asserts.ts";
-import { ensureDirSync } from "https://deno.land/std@0.134.0/fs/mod.ts";
+import { assertEquals } from "https://deno.land/std@0.190.0/testing/asserts.ts";
+import { ensureDirSync } from "https://deno.land/std@0.190.0/fs/mod.ts";
 import { Destination, DownloadedFile } from "./types.ts";
 import { download } from "./mod.ts";
 
