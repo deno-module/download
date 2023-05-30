@@ -10,9 +10,9 @@ Deno `fetch api` based module to `download` file from a URL.
 A specific version (preferred):
 
 ```ts
-// Note this "@v1.0.1" part in the url,
+// Note this "@v2.0.0" part in the url,
 // this can be any version tag of this library
-import { download } from "https://deno.land/x/download@v1.0.1/mod.ts";
+import { download } from "https://deno.land/x/download@v2.0.0/mod.ts";
 ```
 
 Non-versioned URL / "latest" (for quick tests only!):
@@ -32,7 +32,7 @@ you can write a file like `/dependencies/download.ts` in your repo, which
 re-exports the contents of this library like this:
 
 ```ts
-export * from "https://deno.land/x/download@v1.0.1/mod.ts";
+export * from "https://deno.land/x/download@v2.0.0/mod.ts";
 ```
 
 After that you can import your local `/dependencies/download.ts` file everywhere
