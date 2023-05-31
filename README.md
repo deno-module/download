@@ -1,6 +1,9 @@
 # `download⤵️` for Deno
 
-[![tag](https://img.shields.io/badge/deno-%3E=2.0.1-green.svg?color=blue&logo=qcom&logoColor=blue&style=plastic)](https://github.com/denoland/deno)
+[![Tags](https://img.shields.io/github/release/deno-module/download)](https://github.com/deno-module/download/releases)
+[![tag](https://img.shields.io/badge/deno-%3E=1.34.1-green.svg?color=blue&logo=qcom&logoColor=blue&style=plastic)](https://github.com/denoland/deno)
+[![Checks](https://github.com/deno-module/download/actions/workflows/deno.yml/badge.svg)](https://github.com/deno-module/download/actions/workflows/deno.yml)
+[![License](https://img.shields.io/github/license/deno-module/download)](https://github.com/deno-module/download/blob/master/LICENSE)
 
 Deno `fetch api` based module to `download` file from a URL.
 
