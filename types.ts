@@ -1,3 +1,5 @@
+export type Input = string | Request;
+
 export interface Destination {
   dir?: string;
   file?: string;
@@ -9,4 +11,10 @@ export interface DownloadedFile {
   dir: string;
   fullPath: string;
   size: number;
+}
+
+export interface DownloadAllParams {
+  input: Input;
+  destination?: Destination;
+  options?: RequestInit;
 }

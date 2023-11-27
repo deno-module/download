@@ -176,6 +176,55 @@ DownloadedFile {
 }
 ```
 
+## Multiple Downloads
+
+Multiple files can be downloaded by passing multiple urls and other parameters which are mentioned in above examples as array of objects like below:
+
+**Note :**
+`Optimization for multiple downloads is part of future scope`
+
+```ts
+import { DownloadAllParams, downloadAll } from "https://deno.land/x/download/mod.ts";
+
+const url1 = "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf";
+const url2 =
+  "https://www.africau.edu/images/default/sample.pdf";
+
+const downloadList: DownloadAllParams[] = [
+  {
+    input: url,
+    output: "example1.pdf",
+  },
+  {
+    input: url2,
+    output: "example2.pdf",
+  }
+].map(({ input, output }) => ({
+  input,
+  destination: { file: output, dir: "./test" },
+}));
+try {
+  const fileObjList = await downloadAll(downloadList);
+} catch (err) {
+  console.log(err);
+}
+```
+
+### Return Value
+
+`downloadAll` function returns an array of objects with attributes: `file`(filename), `dir`,
+`fullPath`, and `size`(in bytes)
+
+```ts
+// definiton of return object. check:./type.ts
+DownloadedFile {
+  file: string,
+  dir:string,
+  fullPath: string,
+  size: number
+}[]
+```
+
 ## Deno Permission
 
 You need `--allow-net` and `--allow-write` permission to use `download`

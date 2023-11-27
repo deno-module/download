@@ -1,4 +1,9 @@
-import { Destination, DownloadedFile } from "./types.ts";
+import {
+  Destination,
+  DownloadAllParams,
+  DownloadedFile,
+  Input,
+} from "./types.ts";
 import { Buffer } from "https://deno.land/std@0.190.0/io/buffer.ts";
 import { ensureDirSync } from "https://deno.land/std@0.190.0/fs/mod.ts";
 
@@ -11,7 +16,7 @@ import { ensureDirSync } from "https://deno.land/std@0.190.0/fs/mod.ts";
  * @returns
  */
 export async function download(
-  input: string | Request,
+  input: Input,
   destination?: Destination,
   options?: RequestInit,
 ): Promise<DownloadedFile> {
@@ -45,4 +50,20 @@ export async function download(
   const fullPath = `${dir}/${file}`;
   await Deno.writeFile(fullPath, unit8arr, mode);
   return { file, dir, fullPath, size };
+}
+
+export async function downloadAll(
+  params: DownloadAllParams[],
+): Promise<DownloadedFile[]> {
+  try {
+    const results: DownloadedFile[] = [];
+    for (const param of params) {
+      results.push(
+        await download(param.input, param?.destination, param?.options),
+      );
+    }
+    return results;
+  } catch (error) {
+    throw error;
+  }
 }
