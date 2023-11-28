@@ -52,6 +52,13 @@ export async function download(
   return { file, dir, fullPath, size };
 }
 
+/**
+ * Download multiple files from url to the destination.
+ * Each download is configurable
+ *
+ * @param params - array of objects containing parameters for download function
+ * @returns
+ */
 export async function downloadAll(
   params: DownloadAllParams[],
 ): Promise<DownloadedFile[]> {
