@@ -1,6 +1,10 @@
 {
-  "version": "2",
+  "version": "3",
+  "redirects": {
+    "https://crux.land/router@0.0.5": "https://crux.land/api/get/2KNRVU.ts"
+  },
   "remote": {
+    "https://crux.land/api/get/2KNRVU.ts": "6a77d55844aba78d01520c5ff0b2f0af7f24cc1716a0de8b3bb6bd918c47b5ba",
     "https://deno.land/std@0.190.0/_util/asserts.ts": "178dfc49a464aee693a7e285567b3d0b555dc805ff490505a8aae34f9cfb1462",
     "https://deno.land/std@0.190.0/_util/os.ts": "d932f56d41e4f6a6093d56044e29ce637f8dcc43c5a90af43504a889cf1775e3",
     "https://deno.land/std@0.190.0/bytes/copy.ts": "939d89e302a9761dcf1d9c937c7711174ed74c59eef40a1e4569a05c9de88219",
@@ -31,6 +35,7 @@
     "https://deno.land/std@0.190.0/testing/_diff.ts": "1a3c044aedf77647d6cac86b798c6417603361b66b54c53331b312caeb447aea",
     "https://deno.land/std@0.190.0/testing/_format.ts": "a69126e8a469009adf4cf2a50af889aca364c349797e63174884a52ff75cf4c7",
     "https://deno.land/std@0.190.0/testing/asserts.ts": "e16d98b4d73ffc4ed498d717307a12500ae4f2cbe668f1a215632d19fcffc22f",
-    "https://deno.land/std@0.190.0/types.d.ts": "dbaeb2c4d7c526db9828fc8df89d8aecf53b9ced72e0c4568f97ddd8cda616a4"
+    "https://deno.land/std@0.190.0/types.d.ts": "dbaeb2c4d7c526db9828fc8df89d8aecf53b9ced72e0c4568f97ddd8cda616a4",
+    "https://deno.land/x/mock_fetch@0.3.0/mod.ts": "7e7806c65ab17b2b684c334c4e565812bdaf504a3e9c938d2bb52bb67428bc89"
   }
 }
