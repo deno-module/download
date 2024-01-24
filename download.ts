@@ -16,9 +16,9 @@ export async function download(
   options?: RequestInit,
 ): Promise<DownloadedFile> {
   const response = await fetch(input, options);
-  if (response.status !== 200) {
+  if (!response.ok) {
     throw new Deno.errors.Http(
-      `status ${response.status}-'${response.statusText}' received instead of 200`,
+      `error status ${response.status}-'${response.statusText}' received`,
     );
   }
 
